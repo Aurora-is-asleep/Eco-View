@@ -115,7 +115,9 @@
         }
         
         .chart-container {
+            position: relative;
             height: 250px;
+            width: 100%;
             margin: 1.5rem 0;
         }
         
@@ -258,11 +260,6 @@
     </style>
 </head>
 <body>
-    <!-- The content remains exactly the same as in the previous Myanmar version -->
-    <!-- Only the color scheme has changed to match your palette -->
-    <!-- Header, nav, and all sections maintain their structure -->
-    <!-- Only the visual styling has been updated -->
-    
     <header>
         <h1>Eco View Myanmar</h1>
         <p>Explore Environmental Data for Sustainable Living in Myanmar</p>
@@ -463,216 +460,232 @@
         // Initialize all charts with earth-toned color scheme
         function initCharts() {
             // Energy Production Chart
-            const energyCtx = document.getElementById('energyChart').getContext('2d');
-            new Chart(energyCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Hydro', 'Natural Gas', 'Coal', 'Oil', 'Renewables'],
-                    datasets: [{
-                        label: 'Electricity Generation (TWh)',
-                        data: [12.5, 8.2, 3.1, 1.3, 0.5],
-                        backgroundColor: [
-                            '#8A9A5B', // Sage
-                            '#6D8B3D', // Olive
-                            '#4F4F2F', // Olivewood
-                            '#3A2F1D', // Bark
-                            '#E2CB8B'  // Sand
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-            
-            // Renewable Energy Share Chart
-            const renewableCtx = document.getElementById('renewableChart').getContext('2d');
-            new Chart(renewableCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Hydro', 'Other Renewables', 'Non-Renewable'],
-                    datasets: [{
-                        data: [35, 3, 62],
-                        backgroundColor: [
-                            '#6D8B3D', // Olive
-                            '#8A9A5B', // Sage
-                            '#4F4F2F'  // Olivewood
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '65%'
-                }
-            });
-            
-            // Energy Access Chart
-            const accessCtx = document.getElementById('accessChart').getContext('2d');
-            new Chart(accessCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2010', '2015', '2020', '2021'],
-                    datasets: [{
-                        label: 'Population with Electricity Access (%)',
-                        data: [49, 63, 68, 70],
-                        borderColor: '#6D8B3D', // Olive
-                        borderWidth: 3,
-                        fill: false,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false
-                }
-            });
-            
-            // Water Resources Chart
-            const waterCtx = document.getElementById('waterChart').getContext('2d');
-            new Chart(waterCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Myanmar', 'ASEAN Average', 'Global Average'],
-                    datasets: [{
-                        label: 'Freshwater per capita (m³)',
-                        data: [18218, 4900, 5925],
-                        backgroundColor: [
-                            '#6D8B3D', // Olive
-                            '#8A9A5B', // Sage
-                            '#4F4F2F'  // Olivewood
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-            
-            // Water Access Chart
-            const waterAccessCtx = document.getElementById('waterAccessChart').getContext('2d');
-            new Chart(waterAccessCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Basic Access', 'Limited', 'Unimproved', 'Surface Water'],
-                    datasets: [{
-                        data: [75, 15, 8, 2],
-                        backgroundColor: [
-                            '#6D8B3D', // Olive
-                            '#8A9A5B', // Sage
-                            '#E2CB8B', // Sand
-                            '#4F4F2F'  // Olivewood
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '65%'
-                }
-            });
-            
-            // PM2.5 Chart
-            const pm25Ctx = document.getElementById('pm25Chart').getContext('2d');
-            new Chart(pm25Ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Yangon', 'Mandalay', 'Naypyidaw', 'Myitkyina'],
-                    datasets: [{
-                        label: 'PM2.5 (µg/m³)',
-                        data: [28.5, 32.1, 19.8, 16.5],
-                        backgroundColor: [
-                            '#4F4F2F', // Olivewood
-                            '#6D8B3D', // Olive
-                            '#8A9A5B', // Sage
-                            '#E2CB8B'  // Sand
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-            
-            // PM2.5 Trend Chart
-            const pm25TrendCtx = document.getElementById('pm25TrendChart').getContext('2d');
-            new Chart(pm25TrendCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2010', '2015', '2019', '2021'],
-                    datasets: [{
-                        label: 'National Average PM2.5',
-                        data: [21.7, 22.4, 24.3, 25.1],
-                        borderColor: '#4F4F2F', // Olivewood
-                        borderWidth: 3,
-                        fill: false,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false
-                }
-            });
-            
-            // Climate Chart
-            const climateCtx = document.getElementById('climateChart').getContext('2d');
-            new Chart(climateCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['Temperature', 'Precipitation', 'Drought', 'Flood', 'Sea Level'],
-                    datasets: [{
-                        label: 'Climate Risk Factors',
-                        data: [7.2, 6.5, 5.8, 6.3, 4.1],
-                        backgroundColor: 'rgba(106, 139, 61, 0.2)',
-                        borderColor: '#6D8B3D',
-                        pointBackgroundColor: '#6D8B3D',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: '#6D8B3D'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: {
-                                color: '#E2CB8B'
-                            },
-                            grid: {
-                                color: '#E2CB8B'
-                            },
-                            pointLabels: {
-                                color: '#4F4F2F'
-                            },
-                            ticks: {
-                                backdropColor: 'transparent'
+            const energyCtx = document.getElementById('energyChart');
+            if (energyCtx) {
+                new Chart(energyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Hydro', 'Natural Gas', 'Coal', 'Oil', 'Renewables'],
+                        datasets: [{
+                            label: 'Electricity Generation (TWh)',
+                            data: [12.5, 8.2, 3.1, 1.3, 0.5],
+                            backgroundColor: [
+                                '#8A9A5B', // Sage
+                                '#6D8B3D', // Olive
+                                '#4F4F2F', // Olivewood
+                                '#3A2F1D', // Bark
+                                '#E2CB8B'  // Sand
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
                             }
                         }
                     }
-                }
-            });
+                });
+            }
+            
+            // Renewable Energy Share Chart
+            const renewableCtx = document.getElementById('renewableChart');
+            if (renewableCtx) {
+                new Chart(renewableCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Hydro', 'Other Renewables', 'Non-Renewable'],
+                        datasets: [{
+                            data: [35, 3, 62],
+                            backgroundColor: [
+                                '#6D8B3D', // Olive
+                                '#8A9A5B', // Sage
+                                '#4F4F2F'  // Olivewood
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%'
+                    }
+                });
+            }
+            
+            // Energy Access Chart
+            const accessCtx = document.getElementById('accessChart');
+            if (accessCtx) {
+                new Chart(accessCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2010', '2015', '2020', '2021'],
+                        datasets: [{
+                            label: 'Population with Electricity Access (%)',
+                            data: [49, 63, 68, 70],
+                            borderColor: '#6D8B3D', // Olive
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+            
+            // Water Resources Chart
+            const waterCtx = document.getElementById('waterChart');
+            if (waterCtx) {
+                new Chart(waterCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Myanmar', 'ASEAN Average', 'Global Average'],
+                        datasets: [{
+                            label: 'Freshwater per capita (m³)',
+                            data: [18218, 4900, 5925],
+                            backgroundColor: [
+                                '#6D8B3D', // Olive
+                                '#8A9A5B', // Sage
+                                '#4F4F2F'  // Olivewood
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Water Access Chart
+            const waterAccessCtx = document.getElementById('waterAccessChart');
+            if (waterAccessCtx) {
+                new Chart(waterAccessCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Basic Access', 'Limited', 'Unimproved', 'Surface Water'],
+                        datasets: [{
+                            data: [75, 15, 8, 2],
+                            backgroundColor: [
+                                '#6D8B3D', // Olive
+                                '#8A9A5B', // Sage
+                                '#E2CB8B', // Sand
+                                '#4F4F2F'  // Olivewood
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%'
+                    }
+                });
+            }
+            
+            // PM2.5 Chart
+            const pm25Ctx = document.getElementById('pm25Chart');
+            if (pm25Ctx) {
+                new Chart(pm25Ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Yangon', 'Mandalay', 'Naypyidaw', 'Myitkyina'],
+                        datasets: [{
+                            label: 'PM2.5 (µg/m³)',
+                            data: [28.5, 32.1, 19.8, 16.5],
+                            backgroundColor: [
+                                '#4F4F2F', // Olivewood
+                                '#6D8B3D', // Olive
+                                '#8A9A5B', // Sage
+                                '#E2CB8B'  // Sand
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // PM2.5 Trend Chart
+            const pm25TrendCtx = document.getElementById('pm25TrendChart');
+            if (pm25TrendCtx) {
+                new Chart(pm25TrendCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2010', '2015', '2019', '2021'],
+                        datasets: [{
+                            label: 'National Average PM2.5',
+                            data: [21.7, 22.4, 24.3, 25.1],
+                            borderColor: '#4F4F2F', // Olivewood
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+            
+            // Climate Chart
+            const climateCtx = document.getElementById('climateChart');
+            if (climateCtx) {
+                new Chart(climateCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Temperature', 'Precipitation', 'Drought', 'Flood', 'Sea Level'],
+                        datasets: [{
+                            label: 'Climate Risk Factors',
+                            data: [7.2, 6.5, 5.8, 6.3, 4.1],
+                            backgroundColor: 'rgba(106, 139, 61, 0.2)',
+                            borderColor: '#6D8B3D',
+                            pointBackgroundColor: '#6D8B3D',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#6D8B3D'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    color: '#E2CB8B'
+                                },
+                                grid: {
+                                    color: '#E2CB8B'
+                                },
+                                pointLabels: {
+                                    color: '#4F4F2F'
+                                },
+                                ticks: {
+                                    backdropColor: 'transparent'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         }
         
         // Carbon Footprint Calculator for Myanmar context
@@ -727,10 +740,10 @@
             document.getElementById('result').style.display = 'block';
         }
         
-        // Initialize the page
-        window.onload = function() {
+        // Initialize the page when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
             initCharts();
-        };
+        });
     </script>
 </body>
 </html>
