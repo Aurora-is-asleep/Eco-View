@@ -4,3 +4,11 @@
     width: 100%;
     margin: 1.5rem 0;
 }
+:root {
+    --lightest: #E9F5DB;
+    --light: #CFE1B9;
+    --medium-light: #B5C99A;
+    --medium: #97A97C;
+    --medium-dark: #87986A;
+    --darkest: #718355;
+}
