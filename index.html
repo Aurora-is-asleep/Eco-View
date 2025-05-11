@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco View - Explore Sustainable Living</title>
+    <title>Eco View - Myanmar Environmental Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #4CAF50;
@@ -191,6 +192,17 @@
             display: none;
         }
         
+        .data-source {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .data-source a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
         footer {
             background-color: var(--dark);
             color: white;
@@ -217,119 +229,131 @@
 </head>
 <body>
     <header>
-        <h1>Eco View</h1>
-        <p>Explore Sustainable Living Through Data</p>
+        <h1>Eco View Myanmar</h1>
+        <p>Explore Environmental Data for Sustainable Living in Myanmar</p>
     </header>
     
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#data">Environmental Data</a></li>
-            <li><a href="#tips">Sustainability Tips</a></li>
+            <li><a href="#energy">Energy Data</a></li>
+            <li><a href="#water">Water Data</a></li>
+            <li><a href="#air">Air Quality</a></li>
             <li><a href="#calculator">Footprint Calculator</a></li>
-            <li><a href="#about">About</a></li>
         </ul>
     </nav>
     
     <div class="container">
         <section id="home" class="hero">
-            <h2>Understanding Our Impact on the Planet</h2>
-            <p>Eco View provides interactive tools and real-time data to help you understand how daily choices affect the environment and discover ways to live more sustainably.</p>
+            <h2>Myanmar Environmental Data Dashboard</h2>
+            <p>Explore real data about energy, water, and air quality in Myanmar to understand environmental challenges and opportunities for sustainable development.</p>
         </section>
         
-        <section id="data" class="data-section">
+        <section id="energy" class="data-section">
             <div class="data-card">
-                <h3>Global Carbon Emissions</h3>
-                <p>Current CO₂ levels: <span id="co2-level">415</span> ppm</p>
-                <div class="chart-container" id="co2-chart">
-                    <!-- Chart will be inserted here by JavaScript -->
-                    <img src="https://via.placeholder.com/300x150?text=CO2+Trend+Chart" alt="CO2 Emissions Trend" style="width:100%; border-radius:4px;">
+                <h3>Myanmar Energy Production</h3>
+                <p>Total electricity generation: <span id="energy-generation">25.6</span> TWh (2021)</p>
+                <div class="chart-container">
+                    <canvas id="energyChart"></canvas>
                 </div>
-                <p>Last updated: <span id="co2-update">June 2023</span></p>
+                <p class="data-source">Source: <a href="https://www.iea.org/countries/myanmar" target="_blank">International Energy Agency</a></p>
             </div>
             
             <div class="data-card">
-                <h3>Renewable Energy Adoption</h3>
-                <p>Global renewable energy share: <span id="renewable-percent">29%</span></p>
-                <div class="chart-container" id="energy-chart">
-                    <!-- Chart will be inserted here by JavaScript -->
-                    <img src="https://via.placeholder.com/300x150?text=Renewable+Energy+Chart" alt="Renewable Energy Growth" style="width:100%; border-radius:4px;">
+                <h3>Renewable Energy Share</h3>
+                <p>Percentage of renewables: <span id="renewable-percent">38%</span> (2021)</p>
+                <div class="chart-container">
+                    <canvas id="renewableChart"></canvas>
                 </div>
-                <p>Projected 2030 share: 45%</p>
+                <p class="data-source">Source: <a href="https://www.iea.org/policies/14240-myanmar-energy-master-plan" target="_blank">IEA Myanmar Energy Master Plan</a></p>
             </div>
             
             <div class="data-card">
-                <h3>Water Consumption</h3>
-                <p>Average daily water use per person: <span id="water-use">80</span> gallons</p>
-                <div class="chart-container" id="water-chart">
-                    <!-- Chart will be inserted here by JavaScript -->
-                    <img src="https://via.placeholder.com/300x150?text=Water+Usage+Chart" alt="Water Consumption Trends" style="width:100%; border-radius:4px;">
+                <h3>Energy Access</h3>
+                <p>Population with electricity access: <span id="energy-access">70%</span> (2021)</p>
+                <div class="chart-container">
+                    <canvas id="accessChart"></canvas>
                 </div>
-                <p>Recommended target: 50 gallons</p>
+                <p class="data-source">Source: <a href="https://www.worldbank.org/" target="_blank">World Bank</a></p>
             </div>
         </section>
         
-        <section id="tips" class="tips-section">
-            <h2>Sustainable Living Tips</h2>
-            <p>Small changes can make a big difference. Here are practical ways to reduce your environmental impact:</p>
+        <section id="water" class="data-section">
+            <div class="data-card">
+                <h3>Freshwater Resources</h3>
+                <p>Renewable freshwater per capita: <span id="water-per-capita">18,218</span> m³ (2020)</p>
+                <div class="chart-container">
+                    <canvas id="waterChart"></canvas>
+                </div>
+                <p class="data-source">Source: <a href="https://data.worldbank.org/indicator/ER.H2O.INTR.PC" target="_blank">World Bank</a></p>
+            </div>
             
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h4>Energy Savings</h4>
-                    <ul>
-                        <li>Switch to LED bulbs</li>
-                        <li>Use smart thermostats</li>
-                        <li>Unplug devices when not in use</li>
-                    </ul>
+            <div class="data-card">
+                <h3>Water Access</h3>
+                <p>Basic drinking water services: <span id="water-access">75%</span> (2020)</p>
+                <div class="chart-container">
+                    <canvas id="waterAccessChart"></canvas>
                 </div>
-                
-                <div class="tip-card">
-                    <h4>Water Conservation</h4>
-                    <ul>
-                        <li>Fix leaks promptly</li>
-                        <li>Install low-flow fixtures</li>
-                        <li>Collect rainwater for plants</li>
-                    </ul>
+                <p class="data-source">Source: <a href="https://www.worldbank.org/en/country/myanmar/publication/poverty-report-myanmar-living-conditions-survey-2017" target="_blank">Myanmar Living Conditions Survey</a></p>
+            </div>
+            
+            <div class="data-card">
+                <h3>Water Stress</h3>
+                <p>Freshwater withdrawal rate: <span id="water-withdrawal">1.2%</span> of total resources</p>
+                <div class="chart-container">
+                    <canvas id="stressChart"></canvas>
                 </div>
-                
-                <div class="tip-card">
-                    <h4>Sustainable Food</h4>
-                    <ul>
-                        <li>Reduce meat consumption</li>
-                        <li>Buy local and seasonal</li>
-                        <li>Compost food waste</li>
-                    </ul>
+                <p class="data-source">Source: <a href="https://www.worldbank.org/" target="_blank">World Bank</a></p>
+            </div>
+        </section>
+        
+        <section id="air" class="data-section">
+            <div class="data-card">
+                <h3>Air Pollution (PM2.5)</h3>
+                <p>Mean annual exposure: <span id="pm25-level">24.3</span> µg/m³ (2019)</p>
+                <div class="chart-container">
+                    <canvas id="pm25Chart"></canvas>
                 </div>
-                
-                <div class="tip-card">
-                    <h4>Eco-Friendly Transport</h4>
-                    <ul>
-                        <li>Walk or bike for short trips</li>
-                        <li>Use public transportation</li>
-                        <li>Carpool when possible</li>
-                    </ul>
+                <p class="data-source">Source: <a href="https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3" target="_blank">World Bank</a></p>
+            </div>
+            
+            <div class="data-card">
+                <h3>Air Pollution Trends</h3>
+                <p>Change since 2010: <span id="pm25-change">+12%</span></p>
+                <div class="chart-container">
+                    <canvas id="pm25TrendChart"></canvas>
                 </div>
+                <p class="data-source">Source: <a href="https://www.worldbank.org/en/country/myanmar/publication/air-pollution-in-myanmar" target="_blank">World Bank Report</a></p>
+            </div>
+            
+            <div class="data-card">
+                <h3>Climate Risks</h3>
+                <p>Vulnerability index: <span id="climate-risk">5.8</span>/10 (2022)</p>
+                <div class="chart-container">
+                    <canvas id="climateChart"></canvas>
+                </div>
+                <p class="data-source">Source: <a href="https://climateknowledgeportal.worldbank.org/country/myanmar" target="_blank">Climate Change Knowledge Portal</a></p>
             </div>
         </section>
         
         <section id="calculator" class="calculator">
-            <h3>Carbon Footprint Calculator</h3>
-            <p>Estimate your personal environmental impact based on your lifestyle choices.</p>
+            <h3>Myanmar Carbon Footprint Calculator</h3>
+            <p>Estimate your personal environmental impact based on your lifestyle in Myanmar.</p>
             
             <div class="form-group">
                 <label for="energy">Monthly Electricity Usage (kWh):</label>
-                <input type="number" id="energy" placeholder="e.g. 500">
+                <input type="number" id="energy" placeholder="Average in Myanmar: 150">
             </div>
             
             <div class="form-group">
-                <label for="transport">Weekly Driving Distance (miles):</label>
-                <input type="number" id="transport" placeholder="e.g. 100">
+                <label for="transport">Weekly Transport Distance (km):</label>
+                <input type="number" id="transport" placeholder="Average in Myanmar: 100">
             </div>
             
             <div class="form-group">
                 <label for="diet">Primary Diet:</label>
                 <select id="diet">
-                    <option value="meat-heavy">Meat-heavy</option>
+                    <option value="meat-heavy">Traditional Myanmar (meat-heavy)</option>
                     <option value="balanced">Balanced</option>
                     <option value="vegetarian">Vegetarian</option>
                     <option value="vegan">Vegan</option>
@@ -346,91 +370,265 @@
             </div>
         </section>
         
-        <section id="about" class="about-section">
-            <h2>About Eco View</h2>
-            <p>Eco View was created to make environmental data accessible and understandable for everyone. Our goal is to educate people of all ages about how our daily choices affect the planet and how we can live more sustainably.</p>
-            <p>All data presented is sourced from reputable environmental organizations and updated regularly to provide accurate information.</p>
+        <section class="tips-section">
+            <h2>Sustainable Living Tips for Myanmar</h2>
+            <p>Practical ways to reduce your environmental impact in the Myanmar context:</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Energy Savings</h4>
+                    <ul>
+                        <li>Use energy-efficient appliances</li>
+                        <li>Install solar water heaters</li>
+                        <li>Switch to LED lighting</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-card">
+                    <h4>Water Conservation</h4>
+                    <ul>
+                        <li>Collect rainwater for household use</li>
+                        <li>Fix leaks in pipes and taps</li>
+                        <li>Use traditional water-saving methods</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-card">
+                    <h4>Sustainable Transport</h4>
+                    <ul>
+                        <li>Use public transportation in cities</li>
+                        <li>Walk or cycle for short distances</li>
+                        <li>Maintain vehicles for better efficiency</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-card">
+                    <h4>Waste Reduction</h4>
+                    <ul>
+                        <li>Reduce single-use plastics</li>
+                        <li>Compost organic waste</li>
+                        <li>Reuse and repurpose materials</li>
+                    </ul>
+                </div>
+            </div>
         </section>
     </div>
     
     <footer>
-        <p>&copy; 2023 Eco View | Sustainable Living Education</p>
-        <p>Data sources: NOAA, EPA, International Energy Agency</p>
+        <p>&copy; 2023 Eco View Myanmar | Sustainable Development Dashboard</p>
+        <p>Data sources: International Energy Agency, World Bank, Myanmar Government</p>
     </footer>
     
     <script>
-        // Simple calculator function for demonstration
+        // Initialize all charts
+        function initCharts() {
+            // Energy Production Chart
+            const energyCtx = document.getElementById('energyChart').getContext('2d');
+            new Chart(energyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Hydro', 'Natural Gas', 'Coal', 'Oil', 'Renewables'],
+                    datasets: [{
+                        label: 'Electricity Generation (TWh)',
+                        data: [12.5, 8.2, 3.1, 1.3, 0.5],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#2196F3',
+                            '#607D8B',
+                            '#FF9800',
+                            '#8BC34A'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // Renewable Energy Share Chart
+            const renewableCtx = document.getElementById('renewableChart').getContext('2d');
+            new Chart(renewableCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Hydro', 'Other Renewables', 'Non-Renewable'],
+                    datasets: [{
+                        data: [35, 3, 62],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#8BC34A',
+                            '#F44336'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // Energy Access Chart
+            const accessCtx = document.getElementById('accessChart').getContext('2d');
+            new Chart(accessCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2010', '2015', '2020', '2021'],
+                    datasets: [{
+                        label: 'Population with Electricity Access (%)',
+                        data: [49, 63, 68, 70],
+                        borderColor: '#4CAF50',
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // Water Resources Chart
+            const waterCtx = document.getElementById('waterChart').getContext('2d');
+            new Chart(waterCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Myanmar', 'ASEAN Average', 'Global Average'],
+                    datasets: [{
+                        label: 'Freshwater per capita (m³)',
+                        data: [18218, 4900, 5925],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#2196F3',
+                            '#607D8B'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // Water Access Chart
+            const waterAccessCtx = document.getElementById('waterAccessChart').getContext('2d');
+            new Chart(waterAccessCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Basic Access', 'Limited', 'Unimproved', 'Surface Water'],
+                    datasets: [{
+                        data: [75, 15, 8, 2],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#8BC34A',
+                            '#FFC107',
+                            '#F44336'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // PM2.5 Chart
+            const pm25Ctx = document.getElementById('pm25Chart').getContext('2d');
+            new Chart(pm25Ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Yangon', 'Mandalay', 'Naypyidaw', 'Myitkyina'],
+                    datasets: [{
+                        label: 'PM2.5 (µg/m³)',
+                        data: [28.5, 32.1, 19.8, 16.5],
+                        backgroundColor: [
+                            '#F44336',
+                            '#FF9800',
+                            '#4CAF50',
+                            '#2196F3'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // PM2.5 Trend Chart
+            const pm25TrendCtx = document.getElementById('pm25TrendChart').getContext('2d');
+            new Chart(pm25TrendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2010', '2015', '2019', '2021'],
+                    datasets: [{
+                        label: 'National Average PM2.5',
+                        data: [21.7, 22.4, 24.3, 25.1],
+                        borderColor: '#F44336',
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+        
+        // Carbon Footprint Calculator for Myanmar context
         function calculateFootprint() {
             const energy = parseFloat(document.getElementById('energy').value) || 0;
             const transport = parseFloat(document.getElementById('transport').value) || 0;
             const diet = document.getElementById('diet').value;
             
-            // Simplified calculation (real-world would be more complex)
-            let footprint = (energy * 0.0005) + (transport * 0.2);
+            // Myanmar-specific calculation factors
+            let footprint = (energy * 0.0007) + (transport * 0.15);
             
-            // Adjust for diet
+            // Adjust for diet (Myanmar averages)
             switch(diet) {
-                case 'meat-heavy': footprint += 2.5; break;
-                case 'balanced': footprint += 1.5; break;
-                case 'vegetarian': footprint += 1.0; break;
-                case 'vegan': footprint += 0.7; break;
+                case 'meat-heavy': footprint += 1.8; break; // Traditional Myanmar diet
+                case 'balanced': footprint += 1.2; break;
+                case 'vegetarian': footprint += 0.8; break;
+                case 'vegan': footprint += 0.5; break;
             }
             
             // Display results
             document.getElementById('footprint-result').textContent = footprint.toFixed(1);
             
-            // Comparison
+            // Myanmar-specific comparison
             const comparison = document.getElementById('footprint-comparison');
-            if (footprint < 4) {
-                comparison.textContent = "This is below the global average of 4.8 tons per person!";
-            } else if (footprint < 8) {
-                comparison.textContent = "This is close to the global average of 4.8 tons per person.";
+            if (footprint < 0.8) {
+                comparison.textContent = "This is much lower than Myanmar's average of 1.5 tons per person!";
+            } else if (footprint < 1.5) {
+                comparison.textContent = "This is close to Myanmar's average of 1.5 tons per person.";
             } else {
-                comparison.textContent = "This is above the global average of 4.8 tons per person.";
+                comparison.textContent = "This is above Myanmar's average of 1.5 tons per person.";
             }
             
-            // Tips
+            // Myanmar-specific tips
             const tips = document.getElementById('footprint-tips');
-            if (footprint > 6) {
-                tips.textContent = "Consider reducing meat consumption, using public transport more often, and switching to renewable energy sources.";
-            } else if (footprint > 3) {
-                tips.textContent = "Good start! You could further reduce your footprint by being mindful of energy use and food choices.";
+            if (footprint > 1.5) {
+                tips.innerHTML = "<strong>Recommendations:</strong><br>" +
+                                 "- Reduce use of diesel generators<br>" +
+                                 "- Use public transport in cities<br>" +
+                                 "- Include more plant-based meals";
+            } else if (footprint > 0.8) {
+                tips.innerHTML = "<strong>Good start!</strong><br>" +
+                                 "You could further reduce your footprint by:<br>" +
+                                 "- Installing solar panels<br>" +
+                                 "- Using energy-efficient appliances";
             } else {
-                tips.textContent = "Excellent! You're living a low-impact lifestyle. Share your habits with others!";
+                tips.innerHTML = "<strong>Excellent!</strong><br>" +
+                                 "You're living a low-impact lifestyle by Myanmar standards.<br>" +
+                                 "Consider sharing your practices with your community!";
             }
             
             // Show results
             document.getElementById('result').style.display = 'block';
         }
         
-        // In a real implementation, we would fetch actual data here
-        // For now, we'll simulate data updates
-        function updateData() {
-            // Simulate slight variations in data
-            const now = new Date();
-            document.getElementById('co2-update').textContent = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-            
-            // These would be API calls in a real implementation
-            const co2Variation = (Math.random() * 0.5 - 0.25);
-            document.getElementById('co2-level').textContent = (415 + co2Variation).toFixed(1);
-            
-            const renewableIncrease = (Math.random() * 0.2);
-            document.getElementById('renewable-percent').textContent = (29 + renewableIncrease).toFixed(1) + '%';
-            
-            const waterVariation = (Math.random() * 5 - 2.5);
-            document.getElementById('water-use').textContent = (80 + waterVariation).toFixed(1);
-        }
-        
-        // Update data on page load
+        // Initialize the page
         window.onload = function() {
-            updateData();
-            
-            // In a real implementation, we would set up chart.js or similar here
-            // For now, we'll just simulate with placeholder images
+            initCharts();
         };
-        
-        // Update data periodically
-        setInterval(updateData, 60000); // Update every minute
     </script>
 </body>
 </html>
