@@ -7,12 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --parchment: #F0E4D0;
-            --sand: #E2CB8B;
-            --olive: #6D8B3D;
-            --sage: #8A9A5B;
-            --olivewood: #4F4F2F;
-            --bark: #3A2F1D;
+            --lightest: #E9F5DB;
+            --light: #CFE1B9;
+            --medium-light: #B5C99A;
+            --medium: #97A97C;
+            --medium-dark: #87986A;
+            --darkest: #718355;
         }
         
         * {
@@ -23,21 +23,21 @@
         }
         
         body {
-            background-color: var(--parchment);
-            color: var(--bark);
+            background-color: var(--lightest);
+            color: var(--darkest);
             line-height: 1.6;
         }
         
         header {
-            background-color: var(--olivewood);
-            color: var(--sand);
+            background-color: var(--darkest);
+            color: var(--lightest);
             padding: 1.5rem 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         nav {
-            background-color: var(--olive);
+            background-color: var(--medium-dark);
             padding: 0.75rem;
         }
         
@@ -52,7 +52,7 @@
         }
         
         nav ul li a {
-            color: var(--parchment);
+            color: var(--lightest);
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 4px;
@@ -61,7 +61,7 @@
         }
         
         nav ul li a:hover {
-            background-color: var(--olivewood);
+            background-color: var(--darkest);
         }
         
         .container {
@@ -71,16 +71,16 @@
         }
         
         .hero {
-            background-color: var(--sand);
+            background-color: var(--light);
             padding: 3rem;
             text-align: center;
             border-radius: 8px;
             margin-bottom: 2rem;
-            border: 1px solid var(--olivewood);
+            border: 1px solid var(--darkest);
         }
         
         .hero h2 {
-            color: var(--olivewood);
+            color: var(--darkest);
             margin-bottom: 1rem;
             font-size: 2rem;
         }
@@ -98,7 +98,7 @@
             padding: 1.75rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--sage);
+            border: 1px solid var(--medium);
         }
         
         .data-card:hover {
@@ -107,9 +107,9 @@
         }
         
         .data-card h3 {
-            color: var(--olivewood);
+            color: var(--darkest);
             margin-bottom: 1.25rem;
-            border-bottom: 2px solid var(--sage);
+            border-bottom: 2px solid var(--medium);
             padding-bottom: 0.75rem;
             font-size: 1.3rem;
         }
@@ -122,11 +122,11 @@
         }
         
         .tips-section {
-            background-color: var(--sand);
+            background-color: var(--light);
             padding: 2.5rem;
             border-radius: 8px;
             margin-bottom: 2rem;
-            border: 1px solid var(--olivewood);
+            border: 1px solid var(--darkest);
         }
         
         .tips-grid {
@@ -141,11 +141,11 @@
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border: 1px solid var(--sage);
+            border: 1px solid var(--medium);
         }
         
         .tip-card h4 {
-            color: var(--olivewood);
+            color: var(--darkest);
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
@@ -164,11 +164,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
             margin-bottom: 3rem;
-            border: 1px solid var(--sage);
+            border: 1px solid var(--medium);
         }
         
         .calculator h3 {
-            color: var(--olivewood);
+            color: var(--darkest);
             margin-bottom: 1.5rem;
             font-size: 1.4rem;
         }
@@ -181,20 +181,20 @@
             display: block;
             margin-bottom: 0.75rem;
             font-weight: 500;
-            color: var(--olivewood);
+            color: var(--darkest);
         }
         
         input, select {
             width: 100%;
             padding: 0.85rem;
-            border: 1px solid var(--sage);
+            border: 1px solid var(--medium);
             border-radius: 4px;
             font-size: 1rem;
-            background-color: var(--parchment);
+            background-color: var(--lightest);
         }
         
         button {
-            background-color: var(--olive);
+            background-color: var(--medium-dark);
             color: white;
             border: none;
             padding: 0.85rem 1.75rem;
@@ -206,34 +206,34 @@
         }
         
         button:hover {
-            background-color: var(--olivewood);
+            background-color: var(--darkest);
         }
         
         .result {
             margin-top: 1.5rem;
             padding: 1.5rem;
-            background-color: var(--sand);
+            background-color: var(--light);
             border-radius: 4px;
             display: none;
-            border: 1px solid var(--olivewood);
+            border: 1px solid var(--darkest);
         }
         
         .data-source {
             font-size: 0.85rem;
-            color: var(--olivewood);
+            color: var(--darkest);
             margin-top: 1rem;
             font-style: italic;
         }
         
         .data-source a {
-            color: var(--olive);
+            color: var(--medium-dark);
             text-decoration: none;
             font-weight: 500;
         }
         
         footer {
-            background-color: var(--olivewood);
-            color: var(--sand);
+            background-color: var(--darkest);
+            color: var(--lightest);
             text-align: center;
             padding: 2.5rem 0;
             margin-top: 3rem;
@@ -260,6 +260,9 @@
     </style>
 </head>
 <body>
+    <!-- The HTML content remains exactly the same as before -->
+    <!-- Only the color scheme variables have been updated -->
+    
     <header>
         <h1>Eco View Myanmar</h1>
         <p>Explore Environmental Data for Sustainable Living in Myanmar</p>
@@ -457,7 +460,7 @@
     </footer>
     
     <script>
-        // Initialize all charts with earth-toned color scheme
+        // Initialize all charts with the new color scheme
         function initCharts() {
             // Energy Production Chart
             const energyCtx = document.getElementById('energyChart');
@@ -470,11 +473,11 @@
                             label: 'Electricity Generation (TWh)',
                             data: [12.5, 8.2, 3.1, 1.3, 0.5],
                             backgroundColor: [
-                                '#8A9A5B', // Sage
-                                '#6D8B3D', // Olive
-                                '#4F4F2F', // Olivewood
-                                '#3A2F1D', // Bark
-                                '#E2CB8B'  // Sand
+                                '#97A97C', // medium
+                                '#87986A', // medium-dark
+                                '#718355', // darkest
+                                '#B5C99A', // medium-light
+                                '#CFE1B9'  // light
                             ]
                         }]
                     },
@@ -500,9 +503,9 @@
                         datasets: [{
                             data: [35, 3, 62],
                             backgroundColor: [
-                                '#6D8B3D', // Olive
-                                '#8A9A5B', // Sage
-                                '#4F4F2F'  // Olivewood
+                                '#87986A', // medium-dark
+                                '#97A97C', // medium
+                                '#718355'  // darkest
                             ],
                             borderWidth: 0
                         }]
@@ -525,7 +528,7 @@
                         datasets: [{
                             label: 'Population with Electricity Access (%)',
                             data: [49, 63, 68, 70],
-                            borderColor: '#6D8B3D', // Olive
+                            borderColor: '#87986A', // medium-dark
                             borderWidth: 3,
                             fill: false,
                             tension: 0.3
@@ -549,9 +552,9 @@
                             label: 'Freshwater per capita (m³)',
                             data: [18218, 4900, 5925],
                             backgroundColor: [
-                                '#6D8B3D', // Olive
-                                '#8A9A5B', // Sage
-                                '#4F4F2F'  // Olivewood
+                                '#87986A', // medium-dark
+                                '#97A97C', // medium
+                                '#718355'  // darkest
                             ]
                         }]
                     },
@@ -577,10 +580,10 @@
                         datasets: [{
                             data: [75, 15, 8, 2],
                             backgroundColor: [
-                                '#6D8B3D', // Olive
-                                '#8A9A5B', // Sage
-                                '#E2CB8B', // Sand
-                                '#4F4F2F'  // Olivewood
+                                '#87986A', // medium-dark
+                                '#97A97C', // medium
+                                '#B5C99A', // medium-light
+                                '#718355'  // darkest
                             ],
                             borderWidth: 0
                         }]
@@ -604,10 +607,10 @@
                             label: 'PM2.5 (µg/m³)',
                             data: [28.5, 32.1, 19.8, 16.5],
                             backgroundColor: [
-                                '#4F4F2F', // Olivewood
-                                '#6D8B3D', // Olive
-                                '#8A9A5B', // Sage
-                                '#E2CB8B'  // Sand
+                                '#718355', // darkest
+                                '#87986A', // medium-dark
+                                '#97A97C', // medium
+                                '#B5C99A'  // medium-light
                             ]
                         }]
                     },
@@ -633,7 +636,7 @@
                         datasets: [{
                             label: 'National Average PM2.5',
                             data: [21.7, 22.4, 24.3, 25.1],
-                            borderColor: '#4F4F2F', // Olivewood
+                            borderColor: '#718355', // darkest
                             borderWidth: 3,
                             fill: false,
                             tension: 0.3
@@ -656,12 +659,12 @@
                         datasets: [{
                             label: 'Climate Risk Factors',
                             data: [7.2, 6.5, 5.8, 6.3, 4.1],
-                            backgroundColor: 'rgba(106, 139, 61, 0.2)',
-                            borderColor: '#6D8B3D',
-                            pointBackgroundColor: '#6D8B3D',
+                            backgroundColor: 'rgba(135, 152, 106, 0.2)',
+                            borderColor: '#87986A',
+                            pointBackgroundColor: '#87986A',
                             pointBorderColor: '#fff',
                             pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: '#6D8B3D'
+                            pointHoverBorderColor: '#87986A'
                         }]
                     },
                     options: {
@@ -670,13 +673,13 @@
                         scales: {
                             r: {
                                 angleLines: {
-                                    color: '#E2CB8B'
+                                    color: '#B5C99A'
                                 },
                                 grid: {
-                                    color: '#E2CB8B'
+                                    color: '#B5C99A'
                                 },
                                 pointLabels: {
-                                    color: '#4F4F2F'
+                                    color: '#718355'
                                 },
                                 ticks: {
                                     backdropColor: 'transparent'
