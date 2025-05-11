@@ -26,19 +26,27 @@
             background-color: var(--lightest);
             color: var(--darkest);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         header {
             background-color: var(--darkest);
             color: var(--lightest);
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
         }
         
         nav {
             background-color: var(--medium-dark);
             padding: 0.75rem;
+            position: fixed;
+            width: 100%;
+            top: 80px;
+            z-index: 100;
         }
         
         nav ul {
@@ -64,164 +72,72 @@
             background-color: var(--darkest);
         }
         
-        .container {
-            max-width: 1400px; /* Increased max-width */
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+        .main-content {
+            margin-top: 160px; /* Space for fixed header and nav */
+            padding: 0;
         }
         
-        .hero {
-            background-color: var(--light);
-            padding: 3rem;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--darkest);
+        .chart-viewer {
+            width: 100vw;
+            height: calc(100vh - 160px);
+            overflow: hidden;
+            position: relative;
         }
         
-        .hero h2 {
-            color: var(--darkest);
-            margin-bottom: 1rem;
-            font-size: 2rem;
+        .chart-slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: transform 0.5s ease;
+            background-color: var(--lightest);
         }
         
-        .data-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Wider minimum column width */
-            gap: 2.5rem; /* Increased gap */
-            margin-bottom: 3rem;
+        .chart-slide.active {
+            transform: translateX(0);
         }
         
-        .data-card {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem; /* Increased padding */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--medium);
+        .chart-slide.next {
+            transform: translateX(100%);
         }
         
-        .data-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-        }
-        
-        .data-card h3 {
-            color: var(--darkest);
-            margin-bottom: 1.5rem; /* Increased margin */
-            border-bottom: 2px solid var(--medium);
-            padding-bottom: 0.75rem;
-            font-size: 1.5rem; /* Larger font size */
+        .chart-slide.prev {
+            transform: translateX(-100%);
         }
         
         .chart-container {
             position: relative;
-            height: 400px; /* Increased height */
-            width: 100%;
-            margin: 2rem 0; /* Increased margin */
+            width: 90%;
+            height: 70%;
+            margin: 1rem 0;
         }
         
-        .tips-section {
-            background-color: var(--light);
-            padding: 2.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--darkest);
-        }
-        
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.75rem;
-            margin-top: 2rem;
-        }
-        
-        .tip-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border: 1px solid var(--medium);
-        }
-        
-        .tip-card h4 {
-            color: var(--darkest);
+        .chart-info {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
             margin-bottom: 1rem;
-            font-size: 1.1rem;
         }
         
-        .tip-card ul {
-            padding-left: 1.25rem;
-        }
-        
-        .tip-card li {
+        .chart-info h3 {
+            color: var(--darkest);
             margin-bottom: 0.5rem;
+            font-size: 1.8rem;
         }
         
-        .calculator {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-            border: 1px solid var(--medium);
-        }
-        
-        .calculator h3 {
-            color: var(--darkest);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-            color: var(--darkest);
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 0.85rem;
-            border: 1px solid var(--medium);
-            border-radius: 4px;
-            font-size: 1rem;
-            background-color: var(--lightest);
-        }
-        
-        button {
-            background-color: var(--medium-dark);
-            color: white;
-            border: none;
-            padding: 0.85rem 1.75rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            transition: background-color 0.3s;
-            font-weight: 500;
-        }
-        
-        button:hover {
-            background-color: var(--darkest);
-        }
-        
-        .result {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background-color: var(--light);
-            border-radius: 4px;
-            display: none;
-            border: 1px solid var(--darkest);
+        .chart-info p {
+            margin-bottom: 0.5rem;
         }
         
         .data-source {
             font-size: 0.85rem;
             color: var(--darkest);
-            margin-top: 1rem;
             font-style: italic;
         }
         
@@ -231,256 +147,250 @@
             font-weight: 500;
         }
         
-        footer {
-            background-color: var(--darkest);
-            color: var(--lightest);
-            text-align: center;
-            padding: 2.5rem 0;
-            margin-top: 3rem;
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 10;
         }
         
-        @media (max-width: 1200px) {
-            .data-section {
-                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            }
+        .nav-button {
+            background-color: var(--medium-dark);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--darkest);
+        }
+        
+        .section-indicator {
+            position: fixed;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--medium-dark);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
         }
         
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
+            header {
+                padding: 0.5rem 0;
+            }
+            
+            nav {
+                top: 60px;
+                padding: 0.5rem;
             }
             
             nav ul li {
-                margin: 0.5rem 0;
+                margin: 0 0.5rem;
             }
             
-            .data-section {
-                grid-template-columns: 1fr;
+            .main-content {
+                margin-top: 120px;
+            }
+            
+            .chart-viewer {
+                height: calc(100vh - 120px);
             }
             
             .chart-container {
-                height: 350px; /* Slightly smaller for mobile */
+                height: 60%;
             }
             
-            .hero, .calculator {
-                padding: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .chart-container {
-                height: 300px; /* Smaller for very small screens */
-            }
-            
-            .data-card {
-                padding: 1.5rem;
+            .section-indicator {
+                top: 100px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- The HTML content remains exactly the same as before -->
-    <!-- Only the sizing and layout has been updated -->
-    
     <header>
         <h1>Eco View Myanmar</h1>
-        <p>Explore Environmental Data for Sustainable Living in Myanmar</p>
     </header>
     
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#energy">Energy Data</a></li>
-            <li><a href="#water">Water Data</a></li>
-            <li><a href="#air">Air Quality</a></li>
-            <li><a href="#calculator">Footprint Calculator</a></li>
+            <li><a href="#" onclick="showSection('energy')">Energy Data</a></li>
+            <li><a href="#" onclick="showSection('water')">Water Data</a></li>
+            <li><a href="#" onclick="showSection('air')">Air Quality</a></li>
+            <li><a href="#" onclick="showSection('calculator')">Calculator</a></li>
         </ul>
     </nav>
     
-    <div class="container">
-        <section id="home" class="hero">
-            <h2>Myanmar Environmental Data Dashboard</h2>
-            <p>Explore real data about energy, water, and air quality in Myanmar to understand environmental challenges and opportunities for sustainable development.</p>
-        </section>
-        
+    <div class="section-indicator" id="sectionIndicator">Energy Data</div>
+    
+    <div class="main-content">
         <!-- Energy Data Section -->
-        <section id="energy" class="data-section">
-            <div class="data-card">
-                <h3>Myanmar Energy Production</h3>
-                <p>Total electricity generation: <strong>25.6 TWh</strong> (2021)</p>
+        <div class="chart-viewer" id="energy-viewer">
+            <div class="chart-slide active" id="energyChart-slide">
+                <div class="chart-info">
+                    <h3>Myanmar Energy Production</h3>
+                    <p>Total electricity generation: <strong>25.6 TWh</strong> (2021)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="energyChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://www.iea.org/countries/myanmar" target="_blank">International Energy Agency</a></p>
             </div>
             
-            <div class="data-card">
-                <h3>Renewable Energy Share</h3>
-                <p>Percentage of renewables: <strong>38%</strong> (2021)</p>
+            <div class="chart-slide next" id="renewableChart-slide">
+                <div class="chart-info">
+                    <h3>Renewable Energy Share</h3>
+                    <p>Percentage of renewables: <strong>38%</strong> (2021)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="renewableChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://www.iea.org/policies/14240-myanmar-energy-master-plan" target="_blank">IEA Myanmar Energy Master Plan</a></p>
             </div>
             
-            <div class="data-card">
-                <h3>Energy Access</h3>
-                <p>Population with electricity access: <strong>70%</strong> (2021)</p>
+            <div class="chart-slide next" id="accessChart-slide">
+                <div class="chart-info">
+                    <h3>Energy Access</h3>
+                    <p>Population with electricity access: <strong>70%</strong> (2021)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="accessChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://www.worldbank.org/" target="_blank">World Bank</a></p>
             </div>
-        </section>
+        </div>
         
         <!-- Water Data Section -->
-        <section id="water" class="data-section">
-            <div class="data-card">
-                <h3>Freshwater Resources</h3>
-                <p>Renewable freshwater per capita: <strong>18,218 m³</strong> (2020)</p>
+        <div class="chart-viewer" id="water-viewer" style="display: none;">
+            <div class="chart-slide active" id="waterChart-slide">
+                <div class="chart-info">
+                    <h3>Freshwater Resources</h3>
+                    <p>Renewable freshwater per capita: <strong>18,218 m³</strong> (2020)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="waterChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://data.worldbank.org/indicator/ER.H2O.INTR.PC" target="_blank">World Bank</a></p>
             </div>
             
-            <div class="data-card">
-                <h3>Water Access</h3>
-                <p>Basic drinking water services: <strong>75%</strong> (2020)</p>
+            <div class="chart-slide next" id="waterAccessChart-slide">
+                <div class="chart-info">
+                    <h3>Water Access</h3>
+                    <p>Basic drinking water services: <strong>75%</strong> (2020)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="waterAccessChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://www.worldbank.org/en/country/myanmar/publication/poverty-report-myanmar-living-conditions-survey-2017" target="_blank">Myanmar Living Conditions Survey</a></p>
             </div>
             
-            <div class="data-card">
-                <h3>Water Stress</h3>
-                <p>Freshwater withdrawal rate: <strong>1.2%</strong> of total resources</p>
+            <div class="chart-slide next" id="stressChart-slide">
+                <div class="chart-info">
+                    <h3>Water Stress</h3>
+                    <p>Freshwater withdrawal rate: <strong>1.2%</strong> of total resources</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="stressChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://www.worldbank.org/" target="_blank">World Bank</a></p>
             </div>
-        </section>
+        </div>
         
         <!-- Air Quality Section -->
-        <section id="air" class="data-section">
-            <div class="data-card">
-                <h3>Air Pollution (PM2.5)</h3>
-                <p>Mean annual exposure: <strong>24.3 µg/m³</strong> (2019)</p>
+        <div class="chart-viewer" id="air-viewer" style="display: none;">
+            <div class="chart-slide active" id="pm25Chart-slide">
+                <div class="chart-info">
+                    <h3>Air Pollution (PM2.5)</h3>
+                    <p>Mean annual exposure: <strong>24.3 µg/m³</strong> (2019)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="pm25Chart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3" target="_blank">World Bank</a></p>
             </div>
             
-            <div class="data-card">
-                <h3>Air Pollution Trends</h3>
-                <p>Change since 2010: <strong>+12%</strong></p>
+            <div class="chart-slide next" id="pm25TrendChart-slide">
+                <div class="chart-info">
+                    <h3>Air Pollution Trends</h3>
+                    <p>Change since 2010: <strong>+12%</strong></p>
+                </div>
                 <div class="chart-container">
                     <canvas id="pm25TrendChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://www.worldbank.org/en/country/myanmar/publication/air-pollution-in-myanmar" target="_blank">World Bank Report</a></p>
             </div>
             
-            <div class="data-card">
-                <h3>Climate Risks</h3>
-                <p>Vulnerability index: <strong>5.8/10</strong> (2022)</p>
+            <div class="chart-slide next" id="climateChart-slide">
+                <div class="chart-info">
+                    <h3>Climate Risks</h3>
+                    <p>Vulnerability index: <strong>5.8/10</strong> (2022)</p>
+                </div>
                 <div class="chart-container">
                     <canvas id="climateChart"></canvas>
                 </div>
                 <p class="data-source">Source: <a href="https://climateknowledgeportal.worldbank.org/country/myanmar" target="_blank">Climate Change Knowledge Portal</a></p>
             </div>
-        </section>
+        </div>
         
         <!-- Calculator Section -->
-        <section id="calculator" class="calculator">
-            <h3>Myanmar Carbon Footprint Calculator</h3>
-            <p>Estimate your personal environmental impact based on your lifestyle in Myanmar.</p>
-            
-            <div class="form-group">
-                <label for="energy">Monthly Electricity Usage (kWh):</label>
-                <input type="number" id="energy" placeholder="Average in Myanmar: 150">
-            </div>
-            
-            <div class="form-group">
-                <label for="transport">Weekly Transport Distance (km):</label>
-                <input type="number" id="transport" placeholder="Average in Myanmar: 100">
-            </div>
-            
-            <div class="form-group">
-                <label for="diet">Primary Diet:</label>
-                <select id="diet">
-                    <option value="meat-heavy">Traditional Myanmar (meat-heavy)</option>
-                    <option value="balanced">Balanced</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                </select>
-            </div>
-            
-            <button onclick="calculateFootprint()">Calculate My Footprint</button>
-            
-            <div id="result" class="result">
-                <h4>Your Estimated Annual Carbon Footprint:</h4>
-                <p id="footprint-result">0</p> metric tons CO₂ equivalent
-                <p id="footprint-comparison"></p>
-                <p id="footprint-tips"></p>
-            </div>
-        </section>
-        
-        <!-- Tips Section -->
-        <section class="tips-section">
-            <h2>Sustainable Living Tips for Myanmar</h2>
-            <p>Practical ways to reduce your environmental impact in the Myanmar context:</p>
-            
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h4>Energy Savings</h4>
-                    <ul>
-                        <li>Use energy-efficient appliances</li>
-                        <li>Install solar water heaters</li>
-                        <li>Switch to LED lighting</li>
-                    </ul>
-                </div>
-                
-                <div class="tip-card">
-                    <h4>Water Conservation</h4>
-                    <ul>
-                        <li>Collect rainwater for household use</li>
-                        <li>Fix leaks in pipes and taps</li>
-                        <li>Use traditional water-saving methods</li>
-                    </ul>
-                </div>
-                
-                <div class="tip-card">
-                    <h4>Sustainable Transport</h4>
-                    <ul>
-                        <li>Use public transportation in cities</li>
-                        <li>Walk or cycle for short distances</li>
-                        <li>Maintain vehicles for better efficiency</li>
-                    </ul>
-                </div>
-                
-                <div class="tip-card">
-                    <h4>Waste Reduction</h4>
-                    <ul>
-                        <li>Reduce single-use plastics</li>
-                        <li>Compost organic waste</li>
-                        <li>Reuse and repurpose materials</li>
-                    </ul>
+        <div class="chart-viewer" id="calculator-viewer" style="display: none;">
+            <div class="chart-slide active" style="justify-content: center;">
+                <div style="max-width: 600px; width: 90%;">
+                    <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--darkest);">Myanmar Carbon Footprint Calculator</h3>
+                    <p style="text-align: center; margin-bottom: 2rem;">Estimate your personal environmental impact based on your lifestyle in Myanmar.</p>
+                    
+                    <div class="form-group">
+                        <label for="energy">Monthly Electricity Usage (kWh):</label>
+                        <input type="number" id="energy" placeholder="Average in Myanmar: 150">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transport">Weekly Transport Distance (km):</label>
+                        <input type="number" id="transport" placeholder="Average in Myanmar: 100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diet">Primary Diet:</label>
+                        <select id="diet">
+                            <option value="meat-heavy">Traditional Myanmar (meat-heavy)</option>
+                            <option value="balanced">Balanced</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="calculateFootprint()" style="width: 100%; margin-top: 1.5rem;">Calculate My Footprint</button>
+                    
+                    <div id="result" style="margin-top: 2rem; padding: 1.5rem; background-color: var(--light); border-radius: 4px; display: none; border: 1px solid var(--darkest);">
+                        <h4 style="text-align: center; margin-bottom: 1rem;">Your Estimated Annual Carbon Footprint:</h4>
+                        <p id="footprint-result" style="text-align: center; font-size: 1.5rem; font-weight: bold;">0</p> 
+                        <p style="text-align: center;">metric tons CO₂ equivalent</p>
+                        <p id="footprint-comparison" style="text-align: center; margin-top: 1rem;"></p>
+                        <p id="footprint-tips" style="text-align: center; margin-top: 1rem;"></p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     
-    <footer>
-        <p>&copy; 2023 Eco View Myanmar | Sustainable Development Dashboard</p>
-        <p>Data sources: International Energy Agency, World Bank, Myanmar Government</p>
-    </footer>
+    <div class="nav-buttons">
+        <button class="nav-button" id="prevButton" onclick="prevSlide()">Previous</button>
+        <button class="nav-button" id="nextButton" onclick="nextSlide()">Next</button>
+    </div>
     
     <script>
-        // Initialize all charts with the new color scheme
+        // Chart initialization
         function initCharts() {
             // Energy Production Chart
             const energyCtx = document.getElementById('energyChart');
@@ -513,7 +423,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -547,7 +457,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -579,7 +489,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -617,7 +527,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -652,7 +562,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -691,7 +601,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -723,7 +633,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -764,7 +674,7 @@
                                 pointLabels: {
                                     color: '#718355',
                                     font: {
-                                        size: 14 // Larger point labels
+                                        size: 14
                                     }
                                 },
                                 ticks: {
@@ -776,7 +686,7 @@
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 14 // Larger legend font
+                                        size: 16
                                     }
                                 }
                             }
@@ -786,7 +696,84 @@
             }
         }
         
-        // Carbon Footprint Calculator for Myanmar context
+        // Navigation variables
+        let currentSection = 'energy';
+        let currentSlide = 0;
+        const sections = {
+            'energy': ['energyChart-slide', 'renewableChart-slide', 'accessChart-slide'],
+            'water': ['waterChart-slide', 'waterAccessChart-slide', 'stressChart-slide'],
+            'air': ['pm25Chart-slide', 'pm25TrendChart-slide', 'climateChart-slide'],
+            'calculator': ['calculator-slide']
+        };
+        
+        // Show specific section
+        function showSection(section) {
+            document.getElementById(currentSection + '-viewer').style.display = 'none';
+            document.getElementById(section + '-viewer').style.display = 'block';
+            currentSection = section;
+            currentSlide = 0;
+            updateSlides();
+            updateSectionIndicator();
+        }
+        
+        // Update slide positions
+        function updateSlides() {
+            const slides = sections[currentSection];
+            slides.forEach((slideId, index) => {
+                const slide = document.getElementById(slideId);
+                slide.classList.remove('active', 'prev', 'next');
+                if (index < currentSlide) {
+                    slide.classList.add('prev');
+                } else if (index > currentSlide) {
+                    slide.classList.add('next');
+                } else {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Update button visibility
+            document.getElementById('prevButton').style.display = 
+                (currentSlide === 0) ? 'none' : 'block';
+            document.getElementById('nextButton').style.display = 
+                (currentSlide === sections[currentSection].length - 1) ? 'none' : 'block';
+        }
+        
+        // Next slide
+        function nextSlide() {
+            if (currentSlide < sections[currentSection].length - 1) {
+                currentSlide++;
+                updateSlides();
+            }
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlides();
+            }
+        }
+        
+        // Update section indicator
+        function updateSectionIndicator() {
+            const indicator = document.getElementById('sectionIndicator');
+            switch(currentSection) {
+                case 'energy':
+                    indicator.textContent = 'Energy Data';
+                    break;
+                case 'water':
+                    indicator.textContent = 'Water Data';
+                    break;
+                case 'air':
+                    indicator.textContent = 'Air Quality';
+                    break;
+                case 'calculator':
+                    indicator.textContent = 'Footprint Calculator';
+                    break;
+            }
+        }
+        
+        // Carbon Footprint Calculator
         function calculateFootprint() {
             const energy = parseFloat(document.getElementById('energy').value) || 0;
             const transport = parseFloat(document.getElementById('transport').value) || 0;
@@ -797,7 +784,7 @@
             
             // Adjust for diet (Myanmar averages)
             switch(diet) {
-                case 'meat-heavy': footprint += 1.8; break; // Traditional Myanmar diet
+                case 'meat-heavy': footprint += 1.8; break;
                 case 'balanced': footprint += 1.2; break;
                 case 'vegetarian': footprint += 0.8; break;
                 case 'vegan': footprint += 0.5; break;
@@ -806,7 +793,7 @@
             // Display results
             document.getElementById('footprint-result').textContent = footprint.toFixed(1);
             
-            // Myanmar-specific comparison
+            // Comparison
             const comparison = document.getElementById('footprint-comparison');
             if (footprint < 0.8) {
                 comparison.textContent = "This is much lower than Myanmar's average of 1.5 tons per person!";
@@ -816,7 +803,7 @@
                 comparison.textContent = "This is above Myanmar's average of 1.5 tons per person.";
             }
             
-            // Myanmar-specific tips
+            // Tips
             const tips = document.getElementById('footprint-tips');
             if (footprint > 1.5) {
                 tips.innerHTML = "<strong>Recommendations:</strong><br>" +
@@ -830,17 +817,18 @@
                                  "- Using energy-efficient appliances";
             } else {
                 tips.innerHTML = "<strong>Excellent!</strong><br>" +
-                                 "You're living a low-impact lifestyle by Myanmar standards.<br>" +
-                                 "Consider sharing your practices with your community!";
+                                 "You're living a low-impact lifestyle by Myanmar standards.";
             }
             
             // Show results
             document.getElementById('result').style.display = 'block';
         }
         
-        // Initialize the page when DOM is fully loaded
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             initCharts();
+            updateSlides();
+            document.getElementById('prevButton').style.display = 'none';
         });
     </script>
 </body>
