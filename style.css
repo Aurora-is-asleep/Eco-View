@@ -12,3 +12,26 @@
     --medium-dark: #87986A;
     --darkest: #718355;
 }
+
+/* Modify your existing CSS */
+.container {
+    max-width: 100%;
+    padding: 2rem;
+}
+
+.data-section {
+    grid-template-columns: 1fr;
+    margin-bottom: 4rem;
+}
+
+.data-card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.chart-container {
+    height: 500px;
+    width: 100%;
+}
