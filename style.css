@@ -13,7 +13,7 @@
     --darkest: #718355;
 }
 
-/* Add this to your existing CSS */
+
 .data-section {
     grid-template-columns: 1fr; /* Single column layout */
     gap: 3rem;
